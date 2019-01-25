@@ -23,7 +23,7 @@ public class Main {
         int[] arrayBalance = {10,-1,2,3,4};
         arrayBalance = new int[]{2,2,2,1,2,2,10,1};
 //        arrayBalance = new int[]{20,15,1,1,2,33};
-        System.out.println(isBalancedArray(arrayBalance)?"Массив балансирован":"Массив не банасирован");
+        System.out.println(isBalancedArray(arrayBalance)?"Массив балансирован":"Массив не баласирован");
 
     }
     static void printArray(float[] array){
