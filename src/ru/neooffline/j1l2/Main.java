@@ -3,18 +3,27 @@ package ru.neooffline.j1l2;
 public class Main {
 
     public static void main(String[] args) {
-//        float[] arr1 = generateRandomArray(10,-100,100,"float");
-//        printArray(arr1);
-//        float[] arrm = generateRandomArray(10,-1000,10,"int");
-//        printArray(arrm);
-//        float[] arrk = generateRandomArray(6,-10,10,"");
-//        printArray(arrk);
-//        float[] arrayTest = {-100,4242,4242,-1,2,3,5,10,-20,18};
-//        findMinMaxElement(arr1);
-        int[] arrayTest = {1,2,3,4,5,6};
-        shiftArray(arrayTest,2);
-        arrayTest = new int[]{1, 2, 3, 4, 5, 6};
-        shiftArray(arrayTest,-3);
+        float[] arrFloat = generateRandomArray(10,-100,100,"float");
+        float[] arrInt = generateRandomArray(10,-1000,10,"int");
+//        float[] arrNull = generateRandomArray(6,-10,10,"");
+//        printArray(arrNull);
+        float[] arrayTestMax = {-100,4242,4242,-1,2,3,5,10,-20,18};
+    /*Если необходимо посмотреть что за массив изучается
+    раскоментировать строку снизу*/
+//        printArray(arrFloat);
+        findMinMaxElement(arrFloat);
+        /*Если необходимо посмотреть что за массив изучается
+        раскоментировать строку снизу*/
+//        printArray(arrInt);
+        findMinMaxElement(arrInt);
+        int[] arrayTestShift = {1,2,3,4,5,6};
+        shiftArray(arrayTestShift,2);
+        arrayTestShift = new int[]{1, 2, 3, 4, 5, 6};
+        shiftArray(arrayTestShift,-3);
+        int[] arrayBalance = {10,-1,2,3,4};
+        arrayBalance = new int[]{2,2,2,1,2,2,10,1};
+//        arrayBalance = new int[]{20,15,1,1,2,33};
+        System.out.println(isBalancedArray(arrayBalance)?"Массив балансирован":"Массив не банасирован");
 
     }
     static void printArray(float[] array){
@@ -60,6 +69,29 @@ public class Main {
         }
         System.out.println("Минимальный элемент массива = " + arrResult[0]+";");
         System.out.println("Максимальный элемент массива = " + arrResult[1]+";");
+        System.out.println("----------------------------------");
+    }
+    //Задание 6
+    static boolean isBalancedArray(int[] array){
+        int sumLeft, sumRight = 0;
+        int i =0;
+        do{
+            sumLeft = sumArrayElements(array,0,i);
+            sumRight = sumArrayElements(array,i+1,array.length-1);
+            i++;
+            if (sumLeft==sumRight) break;
+        } while(i<array.length-2);
+//        String bal = sumLeft==sumRight?"баланисирован":"не баланисрован";
+//        System.out.println("Сумма слева = " + sumLeft + "\nСумма справа = "+ sumRight + "\nИскомое i = " + i);
+//        System.out.println(bal);
+        return sumLeft==sumRight;
+    }
+    static int sumArrayElements(int[] array,int fistElement, int lastElement){
+        int sum=0;
+        for (int i = fistElement; i <= lastElement; i++) {
+            sum+=array[i];
+        }
+        return sum;
     }
     //Задание 7 (если step > 0 - смещение вправо, step < 0 - влево)
     static void shiftArray(int[] array, int step){
