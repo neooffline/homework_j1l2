@@ -7,7 +7,7 @@ public class Main {
         float[] arrInt = generateRandomArray(10,-1000,10,"int");
 //        float[] arrNull = generateRandomArray(6,-10,10,"");
 //        printArray(arrNull);
-        float[] arrayTestMax = {-100,4242,4242,-1,2,3,5,10,-20,18};
+//        float[] arrayTestMax = {-100,4242,4242,-1,2,3,5,10,-20,18};
     /*Если необходимо посмотреть что за массив изучается
     раскоментировать строку снизу*/
 //        printArray(arrFloat);
