@@ -3,18 +3,16 @@ package ru.neooffline.j1l2;
 public class Main {
 
     public static void main(String[] args) {
-        float[] arrFloat = generateRandomArray(10,-100,100,"float");
-        float[] arrInt = generateRandomArray(10,-1000,10,"int");
-//        float[] arrNull = generateRandomArray(6,-10,10,"");
-//        printArray(arrNull);
+        float[] arrFloat = generateRandomArray(10,-1000.0,10.0);
+        int[] arrInt = generateRandomArray(10,-1000,10);
 //        float[] arrayTestMax = {-100,4242,4242,-1,2,3,5,10,-20,18};
     /*Если необходимо посмотреть что за массив изучается
     раскоментировать строку снизу*/
-//        printArray(arrFloat);
+        printArray(arrFloat);
         findMinMaxElement(arrFloat);
         /*Если необходимо посмотреть что за массив изучается
         раскоментировать строку снизу*/
-//        printArray(arrInt);
+        printArray(arrInt);
         findMinMaxElement(arrInt);
         int[] arrayTestShift = {1,2,3,4,5,6};
         shiftArray(arrayTestShift,2);
@@ -27,43 +25,54 @@ public class Main {
 
     }
     static void printArray(float[] array){
-        for (float value:array
-        )
-            if ((int)value==value){
-                System.out.println((int) value);
-            } else {
+        for (float value:array){
+                System.out.printf("%.3f%n",value);
+            }
+        System.out.println("--------------");
+    }
+    static void printArray(int[] array){
+        for (int value:array){
                 System.out.println(value);
             }
         System.out.println("--------------");
     }
-    static float[] generateRandomArray(int size, double min, double max, String type ){
+    static float[] generateRandomArray(int size, double min, double max){
         float[] resArray = new float[size];
         for (int i = 0; i < resArray.length; i++) {
-            switch (type) {
-                case "float":{
-                    resArray[i] = (float) (Math.random() * (max - min + 1) + min);
-                    break;
-                }
-                case "int":{
-                    resArray[i] = Math.round(Math.random() * (max - min + 1) + min);
-                    break;
-                }
-                default:{
-                    resArray[i]=0;
-                    break;
-                }
-            }
+              resArray[i] = (float) (Math.random() * (max - min + 1) + min);
         }
+        return resArray;
+    }
+    static int[] generateRandomArray(int size, int min, int max){
+        int[] resArray = new int[size];
+        for (int i = 0; i < resArray.length; i++) {
+            resArray[i] = (int) Math.round(Math.random() * (max - min + 1) + min);
+            }
         return resArray;
     }
     //Задание 5
     static void findMinMaxElement(float[] array){
         float[] arrResult = new float[2];
+        arrResult[1]=array[0];
         for (int i = 0; i < array.length; i++) {
             if(arrResult[0]>array[i]){
                 arrResult[0]=array[i];
             }
             if (arrResult[1]<array[i]){
+                arrResult[1]=array[i];
+            }
+        }
+        System.out.println("Минимальный элемент массива = " + (Math.rint(arrResult[0]*1000)/1000) +";");
+        System.out.println("Максимальный элемент массива = " + Math.rint(arrResult[1]*1000)/1000 +";");
+        System.out.println("----------------------------------");
+    }
+    static void findMinMaxElement(int[] array){
+        int[] arrResult = new int[2];
+        arrResult[1]=array[0];
+        for (int i = 0; i < array.length; i++) {
+            if(arrResult[0]>array[i]){
+                arrResult[0]=array[i];
+            }if (arrResult[1]<array[i]) {
                 arrResult[1]=array[i];
             }
         }
