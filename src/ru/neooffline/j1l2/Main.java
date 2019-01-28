@@ -3,8 +3,8 @@ package ru.neooffline.j1l2;
 public class Main {
 
     public static void main(String[] args) {
-        float[] arrFloat = generateRandomArray(10,-1000.0,10.0);
-        int[] arrInt = generateRandomArray(10,-1000,10);
+        float[] arrFloat = generateRandomArray(10,10.0,100000.0);
+        int[] arrInt = generateRandomArray(10,10,1110);
 //        float[] arrayTestMax = {-100,4242,4242,-1,2,3,5,10,-20,18};
     /*Если необходимо посмотреть что за массив изучается
     раскоментировать строку снизу*/
@@ -19,7 +19,7 @@ public class Main {
         arrayTestShift = new int[]{1, 2, 3, 4, 5, 6};
         shiftArray(arrayTestShift,-3);
         int[] arrayBalance = {10,-1,2,3,4};
-        arrayBalance = new int[]{2,2,2,1,2,2,10,1};
+        arrayBalance = new int[]{1,1,11,2,2,2,2,1,2,2};
 //        arrayBalance = new int[]{20,15,1,1,2,33};
         System.out.println(isBalancedArray(arrayBalance)?"Массив балансирован":"Массив не баласирован");
 
@@ -53,7 +53,7 @@ public class Main {
     //Задание 5
     static void findMinMaxElement(float[] array){
         float[] arrResult = new float[2];
-        arrResult[1]=array[0];
+        arrResult[0]=arrResult[1]=array[0];
         for (int i = 0; i < array.length; i++) {
             if(arrResult[0]>array[i]){
                 arrResult[0]=array[i];
@@ -68,7 +68,7 @@ public class Main {
     }
     static void findMinMaxElement(int[] array){
         int[] arrResult = new int[2];
-        arrResult[1]=array[0];
+        arrResult[0]=arrResult[1]=array[0];
         for (int i = 0; i < array.length; i++) {
             if(arrResult[0]>array[i]){
                 arrResult[0]=array[i];
@@ -89,7 +89,7 @@ public class Main {
             sumRight = sumArrayElements(array,i+1,array.length-1);
             i++;
             if (sumLeft==sumRight) break;
-        } while(i<array.length-2);
+        } while(i<=array.length-2);
 //        String bal = sumLeft==sumRight?"баланисирован":"не баланисрован";
 //        System.out.println("Сумма слева = " + sumLeft + "\nСумма справа = "+ sumRight + "\nИскомое i = " + i);
 //        System.out.println(bal);
